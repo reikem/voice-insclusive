@@ -1,7 +1,7 @@
 import { initWhisper, WhisperContext } from 'whisper.rn';
 import { ensureAudioDir, AUDIO_DIR } from './io';
 
-const MODEL = require('../../assets/ggml-tiny.bin');
+const MODEL = require("@/assets/ggml-base.bin");
 let ctx: WhisperContext | null = null;
 export async function loadModel() { if (!ctx) ctx = await initWhisper({ filePath: MODEL }); return ctx; }
 

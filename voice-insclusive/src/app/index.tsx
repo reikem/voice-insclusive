@@ -1,15 +1,5 @@
-
-import { ThemedView } from '@/components/themed-view';
-
-
+import { registerRootComponent } from 'expo';
+import App from './App';
 
 
-export default function HomeScreen() {
-  return (
-    <ThemedView >
- 
-    </ThemedView>
-  );
-}
-
-
+registerRootComponent(App);

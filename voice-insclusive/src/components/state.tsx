@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { deleteAudio, loadHist, saveHist } from './io';
+import { deleteAudio, loadHist, saveHist } from './lib/io';
 export type Item = { id: string; title: string; text: string; secs: number; mode: string; at: number; audio?: string; ext?: string };
 type Ctx = { text: string; setText: (t: string) => void; lang: string; setLang: (l: string) => void; tab: number; setTab: (n: number) => void; hist: Item[]; addHist: (i: Item) => void; delHist: (id: string) => void };
 const X = createContext<Ctx>(null as any);
