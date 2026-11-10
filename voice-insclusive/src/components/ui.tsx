@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View, StyleSheet, ViewStyle } from 'react-native';
-import { C } from './theme';
+import { C } from './lib/theme';
 
 export const Btn = ({ label, onPress, kind = 'primary', style, disabled }: { label: string; onPress: () => void; kind?: 'primary' | 'accent' | 'soft'; style?: ViewStyle; disabled?: boolean }) => (
   <Pressable accessibilityRole="button" accessibilityLabel={label} disabled={disabled} onPress={onPress}

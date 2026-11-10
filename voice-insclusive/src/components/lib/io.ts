@@ -1,5 +1,6 @@
 import { Platform, Alert, Share } from 'react-native';
-import * as FileSystem from 'expo-file-system';
+// CAMBIO CLAVE: Importa desde 'expo-file-system/legacy'
+import * as FileSystem from 'expo-file-system/legacy';
 import * as Sharing from 'expo-sharing';
 import * as Clipboard from 'expo-clipboard';
 
