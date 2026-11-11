@@ -43,4 +43,4 @@ example
 /android
 
 # archive language models
-ggml-base.bin
+*.bin
