@@ -42,3 +42,14 @@ example
 /ios
 /android
 
+# Dependencias y compilaciones
+node_modules/
+.expo/
+dist/
+ios/
+android/
+
+# Modelos y archivos binarios pesados (Whisper)
+*.bin
+*.onnx
+ggml-*.bin
