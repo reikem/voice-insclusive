@@ -1,56 +1,105 @@
-# Welcome to your Expo app 👋
+# VoxInclusiva 🎙️📱🌐
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**VoxInclusiva** is a cross-platform application built with React Native and Expo SDK, designed to provide seamless speech-to-text transcription, translation, and audio management across **Android, iOS, and Web**. 
 
-## Get started
+Powered by **Whisper.rn** for native high-performance device inference and Web Assembly (WASM) fallback for the browser, VoxInclusiva bridges the gap between desktop-grade AI speech recognition and mobile accessibility.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🚀 Key Features
 
-2. Start the app
+- **Multi-Platform Support**: Fully optimized for Android, iOS, and Web.
+- **On-Device Speech Recognition**: 
+  - Uses `whisper.rn` with C++ JSI bindings on Android & iOS.
+  - Uses `@huggingface/transformers` (WASM/Whisper-tiny) on Web.
+- **Robust Audio & File Permissions**: Graceful handling of microphone permissions and file system access across all operating systems.
+- **Legacy File System Integration**: Fully adapted for modern Expo SDK 58 file system patterns.
+- **History & Sharing**: Local session history storage and native file export/sharing capabilities.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🛠️ Tech Stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- **Framework**: [Expo SDK 58](https://expo.dev/) (Managed & Native Development Builds)
+- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/)
+- **Core Libraries**:
+  - `expo-av` (Audio recording and playback)
+  - `expo-file-system` (Legacy compatibility storage)
+  - `whisper.rn` (High-performance native JSI Whisper bindings)
+  - `react-native-reanimated` & `react-native-gesture-handler`
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## ⚙️ Prerequisites & Setup
 
-When you're ready, run:
+Ensure you have the following installed on your development machine:
+- Node.js (LTS recommended)
+- `pnpm` (Package Manager)
+- Expo CLI (`npm install -g expo-cli`)
+- Android Studio (for Android builds) or Xcode (for iOS builds on macOS)
+
+### 1. Clone and Install Dependencies
 
 ```bash
-npm run reset-project
+git clone https://github.com/your-username/voice-insclusive.git
+cd voice-insclusive
+pnpm install
 ```
 
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
+### 2. Configure Native Permissions (`app.json`)
+The application requires explicit permissions declared in `app.json` for microphone recording and file storage:
+- **Android**: `RECORD_AUDIO`, `READ_EXTERNAL_STORAGE`, `WRITE_EXTERNAL_STORAGE`
+- **iOS**: `NSMicrophoneUsageDescription`
 
-### Other setup steps
+---
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## 🏃 Running the Project
 
-## Learn more
+Because this project utilizes custom C++ native modules (`whisper.rn`), **it cannot run inside standard Expo Go**. You must use a **Development Build**.
 
-To learn more about developing your project with Expo, look at the following resources:
+### For Web
+```bash
+pnpm web
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### For Android (Development Build)
+```bash
+npx expo prebuild --clean
+npx expo run:android
+```
 
-## Join the community
+### For iOS (Development Build - macOS required)
+```bash
+npx expo prebuild --clean
+cd ios && pod install && cd ..
+npx expo run:ios
+```
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## 📁 Project Structure
+
+```text
+src/
+├── app/                  # Expo Router file-based screens and layout (_layout.tsx, index.tsx)
+├── components/
+│   ├── lib/
+│   │   ├── io.ts         # Cross-platform file system operations & history management
+│   │   ├── perm.ts       # Secure microphone permission handlers
+│   │   ├── whisper.ts    # Platform entry point (web vs native dispatcher)
+│   │   ├── whisper.native.ts # Native Whisper JSI implementation
+│   │   └── whisper.web.ts    # Web Transformers/WASM Whisper implementation
+│   └── screens.tsx       # Main UI screens (Recorder, Editor, Translation)
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check issues page or submit a pull request.
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
