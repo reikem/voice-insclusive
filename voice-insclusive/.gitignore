@@ -42,5 +42,3 @@ example
 /ios
 /android
 
-# archive language models
-*.bin
