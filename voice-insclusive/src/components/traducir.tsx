@@ -5,7 +5,7 @@ import * as Clipboard from 'expo-clipboard';
 import { C } from './theme';
 import { Btn, Card, H, Chip } from './ui';
 import { useApp } from './state';
-import { notify, shareText } from './lib/io';
+import { shareText } from './lib/io';
 import { LANGS, translate } from './lib/translate';
 
 const Page = ({ children }: any) => (
@@ -45,7 +45,6 @@ export function Traducir() {
     setMsg('');
     try {
       const r = await translate(text, src.ml, dst.ml, () => setMsg('Descargando idioma (solo la primera vez, requiere Wi-Fi)…'));
-      // Convertimos el resultado a string plano para alineación de tipos con TypeScript
       const resText = typeof r === 'string' ? r : String(r ?? '');
       setOut(resText);
       setMsg('');
@@ -153,6 +152,30 @@ export function Traducir() {
               <Btn label="Telegram" kind="soft" onPress={() => open('tg://msg?text=', 'https://t.me/share/url?url=%20&text=')} style={{ flex: 1 }} />
               <Btn label="Más" kind="soft" onPress={() => shareText(out)} style={{ flex: 1 }} />
             </View>
+            
+            <Text style={s.muted}>Enviar resultado a otras secciones</Text>
+            <View style={s.row}>
+              <Btn 
+                label="Abrir en Editor" 
+                kind="soft" 
+                style={{ flex: 1 }}
+                onPress={() => { 
+                  setText(out); 
+                  setTab(1); // Índice 1: Editor
+                }} 
+              />
+              <Btn 
+                label="Ir a Inclusión" 
+                kind="soft" 
+                style={{ flex: 1 }}
+                onPress={() => { 
+                  setText(out); 
+                  setLang(to); 
+                  setTab(2); // Índice 2: Inclusión
+                }} 
+              />
+            </View>
+
             <Text style={s.muted}>Pasarelas de inclusión</Text>
             <Btn label="Ver en lengua de señas (deletreo)" kind="soft" onPress={() => { setText(out); setLang(to); setTab(2); }} />
             <Btn label="Ver en braille" kind="soft" onPress={() => { setText(out); setLang(to); setTab(2); }} />
