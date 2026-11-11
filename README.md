@@ -15,7 +15,7 @@ The app addresses modern performance and privacy demands by running local machin
 
 | Grabar (Recorder) | Editor & Post-Processing | Inclusión (Accessibility) | Traducir (Translation) |
 | :---: | :---: | :---: | :---: |
-| <img src="assets/images/pantalla%20grabar.png" width="220" alt="Pantalla Grabar"/> | <img src="assets/images/pantalla%20editor.png" width="220" alt="Pantalla Editor"/> | <img src="assets/images/pantalla%20inclusion.png" width="220" alt="Pantalla Inclusión"/> | <img src="assets/images/pantalla%20traducir.png" width="220" alt="Pantalla Traducir"/> |
+| <img src="assets/images/grabar.webp" width="220" alt="Pantalla Grabar"/> | <img src="assets/images/editor.webp" width="220" alt="Pantalla Editor"/> | <img src="assets/images/inclusion.webp" width="220" alt="Pantalla Inclusión"/> | <img src="assets/images/traducir.webp" width="220" alt="Pantalla Traducir"/> |
 
 ### Core Modules
 
