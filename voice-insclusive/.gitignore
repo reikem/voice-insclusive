@@ -51,5 +51,5 @@ android/
 
 # Modelos y archivos binarios pesados (Whisper)
 *.bin
-*.onnx
 ggml-*.bin
+voice-insclusive/ggml-base.bin
